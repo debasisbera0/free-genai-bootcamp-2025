@@ -76,9 +76,11 @@ Returns details about the most recent study session.
 ```
 
 ### GET /api/dashboard/quick-stats 
+
 Provides a high-level overview of study engagement
+
 #### json response
-```
+``` json
 {
   "total_study_sessions": 25,
   "total_words_reviewed": 500,
@@ -88,7 +90,9 @@ Provides a high-level overview of study engagement
 ```
 
 ### GET /api/study_activities/:id
+
 Fetches details about a specific study activity
+
 #### jason response
 ```
 {
@@ -340,20 +344,53 @@ Fetches study sessions associated with a specific study activity
 }
 ```
 
-#### JSON respnse
+#### JSON response
+```
 {"success": true,
 "word_id: 1,
 "study_session_id: 123,
 "correct": true,
 "created_at": 2025-02-08T17:33:07-05:00"
 }
+```
 
 ## Mage Tasks
 Mage is a task runner for Go.
-Lets list out possible tasks we need for the language school
+Lets list out possible tasks we need for the language portal.
 
 ### Initialize Database
-Thsi task will run a series of migrations sql files on the database
+Thsi task will run a series of migrations sql files on the database.
 
-### Seed data
-This task will import json files and transform them into target data for the database.
+### Migrate Database
+This task will eun a seried of migrations sql files on the database.
+
+Migratios live in the the `migrations` folder.
+The Migration files will be run in order of their file name. 
+The file names should look like this:
+
+```sql
+0001_init.sql
+0002_create_words_table.sql
+```
+
+### Seed Data
+This task will import json files and transform them into target data for the database called `words.db'.
+Example is taken from ExamProCo GitHub repo: `https://github.com/ExamProCo/free-genai-bootcamp-2025/blob/main/lang-portal/backend-flask/seed/data_verbs.json`
+
+All seed files libe in the `seeds` folder
+All seed files should be loaded
+
+In our task we should have  DSL to specific each seed file and its expected group word name.
+
+``` json
+[
+  {
+    "kanji": "払う",
+    "romaji": "harau",
+    "english": "to pay",
+    "parts": [
+      { "kanji": "払", "romaji": ["ha","ra"] },
+      { "kanji": "う", "romaji": ["u"] }
+    ]
+  },
+  ```
