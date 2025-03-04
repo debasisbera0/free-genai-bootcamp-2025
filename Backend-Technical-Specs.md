@@ -53,6 +53,7 @@ We have follwong tables:
 
 ### GET /api/dashboard/last_study_session
 Returns details about the most recent study session.
+
 #### JSON response 
 ```
 {
