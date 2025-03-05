@@ -12,9 +12,49 @@ A language learning school wants to build a prototype of learning portal which w
 - the backend will be built using Go
 - the database will be SQLlite3
 - the API will be built using Gin
+- Mage is a task runner for Go.
 - The API will always return JSON
 - there will be no authentication and authorization
 - Everything will be treated as a single user
+
+## Directory Structure
+```text
+backend_go/
+│── main.go                # Entry point of the application
+│── go.mod                 # Go module file
+│── go.sum                 # Go dependencies
+│── words.db               # SQLite3 database
+│── config/                
+│   ├── config.go          # Configuration settings
+│── controllers/           
+│   ├── dashboard.go       # Handles dashboard-related API routes
+│   ├── groups.go          # Handles word groups API
+│   ├── study_activities.go # Handles study activities API
+│   ├── study_sessions.go  # Handles study sessions API
+│   ├── words.go           # Handles words API
+│── models/                
+│   ├── word.go            # Word model
+│   ├── group.go           # Group model
+│   ├── study_session.go   # Study session model
+│   ├── study_activity.go  # Study activity model
+│   ├── word_review.go     # Word review model
+│── routes/                
+│   ├── router.go          # Route definitions
+│── services/              
+│   ├── word_service.go    # Business logic for words
+│   ├── group_service.go   # Business logic for groups
+│   ├── study_service.go   # Business logic for study sessions
+│── database/              
+│   ├── db.go              # SQLite connection and setup
+│── migrations/            
+│   ├── 0001_init.sql      # Initial DB migration
+│   ├── 0002_create_tables.sql # Table definitions
+│── seeds/                 
+│   ├── seed_words.json    # Sample vocabulary seed data
+│── magefile.go            # Mage task runner script
+│── README.md              # Project documentation
+
+```
 
 ## Database Schema
 
