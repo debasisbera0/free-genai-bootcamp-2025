@@ -20,39 +20,36 @@ A language learning school wants to build a prototype of learning portal which w
 ## Directory Structure
 ```text
 backend_go/
-│── main.go                # Entry point of the application
-│── go.mod                 # Go module file
-│── go.sum                 # Go dependencies
-│── words.db               # SQLite3 database
-│── config/                
-│   ├── config.go          # Configuration settings
-│── controllers/           
-│   ├── dashboard.go       # Handles dashboard-related API routes
-│   ├── groups.go          # Handles word groups API
-│   ├── study_activities.go # Handles study activities API
-│   ├── study_sessions.go  # Handles study sessions API
-│   ├── words.go           # Handles words API
-│── models/                
-│   ├── word.go            # Word model
-│   ├── group.go           # Group model
-│   ├── study_session.go   # Study session model
-│   ├── study_activity.go  # Study activity model
-│   ├── word_review.go     # Word review model
-│── routes/                
-│   ├── router.go          # Route definitions
-│── services/              
-│   ├── word_service.go    # Business logic for words
-│   ├── group_service.go   # Business logic for groups
-│   ├── study_service.go   # Business logic for study sessions
-│── database/              
-│   ├── db.go              # SQLite connection and setup
-│── migrations/            
-│   ├── 0001_init.sql      # Initial DB migration
-│   ├── 0002_create_tables.sql # Table definitions
-│── seeds/                 
-│   ├── seed_words.json    # Sample vocabulary seed data
-│── magefile.go            # Mage task runner script
-│── README.md              # Project documentation
+├── cmd/                # Application entry points
+│   └── server/         # Main server entry point
+│       └── main.go
+├── internal/           # Core application logic
+│   ├── models/         # Database models and data access
+│   │   ├── word.go
+│   │   ├── group.go
+│   │   ├── study_session.go
+│   ├── handlers/       # HTTP handlers (Gin route handlers)
+│   │   ├── dashboard_handler.go
+│   │   ├── words_handler.go
+│   │   ├── groups_handler.go
+│   │   ├── study_sessions_handler.go
+│   ├── service/        # Business logic layer
+│   │   ├── word_service.go
+│   │   ├── group_service.go
+│   │   ├── study_session_service.go
+│   ├── db/             # Database connection & migrations
+│       ├── db.go       # Database connection setup
+│       ├── migrations/ # SQL migration files
+│       │   ├── 0001_init.sql
+│       │   ├── 0002_create_words_table.sql
+│       ├── seeds/      # Seed data
+│       │   ├── seed_words.json
+│       │   ├── seed_groups.json
+├── magefile.go         # Mage task runner file
+├── go.mod              # Go module file
+├── go.sum              # Dependency management
+└── words.db            # SQLite database file (git ignored)
+
 
 ```
 
